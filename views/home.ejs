@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1><%= compliment%></h1>
+    <h1>Hey <%= name%>,</h1>
+    <h2><%= compliment%></h2>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script>
         $('body').css({'background-color': "<%= color.normal%>"})
-        $('h1').css({'color': "<%= color.inverted%>"})
+        $('h1, h2').css({'color': "<%= color.inverted%>"})
     </script>
 </body>
 </html>

@@ -15,14 +15,20 @@ app.listen(port, ()=>{
 
 app.get('/', (req, res)=>{
     getCompliment()
-        .then(compliment => { 
-            console.log(compliment)
-            res.render('home', {compliment: compliment, color: randomColor()})
+        .then(compliment => {
+            res.render('home', {name: '', 
+                                compliment: compliment, 
+                                color: randomColor()})
         }
     )})
 
-app.get('/name', (req, res)=>{
-    res.render('home')
+app.get('/:name', (req, res)=>{
+    getCompliment()
+        .then(compliment => {
+            res.render('home', {name: req.params.name,
+                                compliment: compliment, 
+                                color: randomColor()})
+        })
 })
 
 
