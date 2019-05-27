@@ -14,9 +14,33 @@ app.listen(port, ()=>{
 
 
 app.get('/', (req, res)=>{
-    axios.get('https://complimentr.com/api')
-        .then((apiRes)=>{
-            console.log(apiRes)
-            res.render('home', {compliment: apiRes.data.compliment})
-    })
+    getCompliment()
+        .then(compliment => { 
+            console.log(compliment)
+            res.render('home', {compliment: compliment, color: randomColor()})
+        }
+    )})
+
+app.get('/name', (req, res)=>{
+    res.render('home')
 })
+
+
+function getCompliment(){
+    return axios.get('https://complimentr.com/api')
+                .then((res)=>{
+                    return res.data.compliment
+                })
+}
+
+function randomColor(){
+    var x = Math.floor(Math.random()*256)
+    var y = Math.floor(Math.random()*256)
+    var z = Math.floor(Math.random()*256)
+
+    return {
+        normal: `rgb(${x}, ${y}, ${z})`,
+        inverted: `rgb(${Math.abs(x -256)}, ${Math.abs(y -256)}, ${Math.abs(z -256)})`
+    }
+}
+

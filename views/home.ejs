@@ -1,2 +1,18 @@
-<h1>home page</h1>
-<p><%= compliment%></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1><%= compliment%></h1>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        $('body').css({'background-color': "<%= color.normal%>"})
+        $('h1').css({'color': "<%= color.inverted%>"})
+    </script>
+</body>
+</html>
